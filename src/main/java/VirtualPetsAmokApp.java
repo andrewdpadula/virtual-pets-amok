@@ -29,7 +29,7 @@ public class VirtualPetsAmokApp {
 				myPetShelter.tickAllPets();
 			} else if (userInput.equals("3")) {
 				System.out.println(
-						"You water the organic pets. This brings their thirst down, but makes them a little hungry."
+						"You water the organic pets, bringing their thirst down, but it makes them a little hungry."
 								+ "\nThe water also makes them need to go potty a little bit more.");
 				myPetShelter.waterAllOrganicPets();
 				myPetShelter.tickAllPets();
