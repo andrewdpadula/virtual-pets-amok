@@ -79,7 +79,7 @@ public class VirtualPetShelter {
 			if (pet instanceof OrganicCat) {
 				if (pet.needToPotty >= 20) {
 					((OrganicCat) pet).addWasteInLitterBox();
-					pet.needToPotty -= 0;
+					pet.needToPotty -= 12;
 				}
 			}
 			if (pet instanceof Organic) {
