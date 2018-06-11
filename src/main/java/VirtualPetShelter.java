@@ -77,8 +77,9 @@ public class VirtualPetShelter {
 				}
 			}
 			if (pet instanceof OrganicCat) {
-				if (pet.needToPotty >= 50) {
+				if (pet.needToPotty >= 20) {
 					((OrganicCat) pet).addWasteInLitterBox();
+					pet.needToPotty -= 0;
 				}
 			}
 			if (pet instanceof Organic) {
@@ -89,26 +90,71 @@ public class VirtualPetShelter {
 				((Robotic) pet).raiseNeedForOil();
 				((Robotic) pet).raiseNeedForMaintenance();
 			}
+			if (pet.amountOfWasteInLitterBox >= 20) {
+				if (pet instanceof OrganicCat) {
+					System.out.println(
+							"The communal litter box is overflowing with excrement. You'd better clean it soon!"
+									+ "\nThe health of your organic cat(s) will decrease at a faster pace until the box is cleaned.");
+					pet.health -= 1;
+				}
+			}
+			if (pet.amountOfWasteInCage >= 20) {
+				if (pet instanceof OrganicDog) {
+					System.out.println(
+							pet.getPetName() + "'s cage has a lot of waste in it. You'd better clean the cages soon!"
+									+ "\nThe health of " + pet.getPetName()
+									+ " will decrease at a faster pace until the cages are cleaned.");
+					pet.health -= 1;
+				}
+			}
+			if (pet.getHealth() <= 0) {
+				System.out.println("Oh, no! " + pet.getPetName() + " has died because you let its health reach zero."
+						+ "\nGame over!");
+				System.exit(0);
+			}
 		}
 	}
 
 	public void oilAllRobots() {
 		for (VirtualPet pet : pets.values()) {
-			pet.oilRobot();
+			if (pet instanceof Robotic) {
+				pet.oilRobot();
+			}
 		}
 	}
 
 	public void maintainAllRobots() {
 		for (VirtualPet pet : pets.values()) {
-			pet.maintainRobot();
+			if (pet instanceof Robotic) {
+				pet.maintainRobot();
+			}
 		}
 	}
 
 	public void cleanAllCages() {
 		for (VirtualPet pet : pets.values()) {
 			if (pet instanceof OrganicDog) {
-				((OrganicDog) pet).cleanCage();
+				(pet).cleanCage();
 			}
 		}
+
+	}
+
+	public void cleanCommunalLitterBox() {
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof OrganicCat) {
+				((OrganicCat) pet).cleanLitterBox();
+			}
+
+		}
+	}
+
+	public void walkAllDogs() {
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof OrganicDog || pet instanceof RoboticDog) {
+				pet.walk();
+			}
+		}
+
 	}
 }

@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import org.mockito.internal.invocation.realmethod.CleanTraceRealMethod;
-
 public class VirtualPetsAmokApp {
 	static Scanner input = new Scanner(System.in);
 	static VirtualPetShelter myPetShelter = new VirtualPetShelter();
@@ -10,7 +8,7 @@ public class VirtualPetsAmokApp {
 
 		myPetShelter.addPet(new OrganicDog("Stipe", "a lazy organic dog", 50, 50, 25, 25, 25, 0));
 		myPetShelter.addPet(new RoboticDog("Mills", "a friendly robotic dog", 50, 50, 25, 25));
-		myPetShelter.addPet(new OrganicCat("Buck", "a shy organic cat", 50, 50, 25, 25, 25));
+		myPetShelter.addPet(new OrganicCat("Buck", "a shy organic cat", 50, 50, 25, 25, 0));
 		myPetShelter.addPet(new RoboticCat("Berry", "a naughty robotic cat", 50, 50, 25, 25));
 
 		System.out.println("Virtual Pet 3: PETS AMOK!\nWelcome to our Pet Shelter.");
@@ -24,16 +22,18 @@ public class VirtualPetsAmokApp {
 				System.out.println(
 						"Note that organic pets never need oil or maintenance, while robotic pets never need to eat, drink, or go potty.");
 			} else if (userInput.equals("2")) {
-				System.out.println("You feed the organic pets. This brings their hunger to zero, but makes them a little thirsty."
-						+ "\nFeeding also makes them need to go potty a little bit more.");
+				System.out.println(
+						"You feed the organic pets. This brings their hunger down, but makes them a little thirsty."
+								+ "\nFeeding also makes them need to go potty a little bit more.");
 				myPetShelter.feedAllOrganicPets();
+				myPetShelter.tickAllPets();
 			} else if (userInput.equals("3")) {
-				System.out.println("You water the organic pets. This brings their thirst to zero, but makes them a little hungry."
-						+ "\nThe water also makes them need to go potty a little bit more.");
+				System.out.println(
+						"You water the organic pets. This brings their thirst down, but makes them a little hungry."
+								+ "\nThe water also makes them need to go potty a little bit more.");
 				myPetShelter.waterAllOrganicPets();
-			}
-
-			else if (userInput.equals("4")) {
+				myPetShelter.tickAllPets();
+			} else if (userInput.equals("4")) {
 				myPetShelter.displayStatus();
 				System.out.println("Please enter the name of the pet you want to play with.");
 				String petToPlayWith = input.nextLine();
@@ -42,7 +42,11 @@ public class VirtualPetsAmokApp {
 						+ " happier!");
 				myPetShelter.tickAllPets();
 			} else if (userInput.equals("5")) {
-				// walk all dogs
+				myPetShelter.walkAllDogs();
+				System.out
+						.println("You walk all the organic dogs and robotic dogs, boosting their health and happiness."
+								+ "\nThe organic dogs relieve themselves outside.");
+				myPetShelter.tickAllPets();
 			} else if (userInput.equals("6")) {
 				myPetShelter.cleanAllCages();
 				System.out.println("OK. All waste has been removed from the dog cages.\n"
@@ -50,7 +54,9 @@ public class VirtualPetsAmokApp {
 						+ "Please remember to wash your hands before you eat anything.");
 				myPetShelter.tickAllPets();
 			} else if (userInput.equals("7")) {
-
+				System.out.println("OK. You scoop the excrement from the communal litter box.");
+				myPetShelter.cleanCommunalLitterBox();
+				myPetShelter.tickAllPets();
 			} else if (userInput.equals("8")) {
 				myPetShelter.oilAllRobots();
 				System.out.println("You grease every creaky, rusty bucket of bolts in this shelter.\n"
@@ -62,9 +68,7 @@ public class VirtualPetsAmokApp {
 						"A new update is available for the RoboPet OS. You download and install it for each robotic pet."
 								+ "\nThe robotic pets won't need any more maintenance, for now. They seem a bit happier and healthier as a result!");
 				myPetShelter.tickAllPets();
-			}
-
-			else if (userInput.equals("10")) {
+			} else if (userInput.equals("10")) {
 				myPetShelter.tickAllPets();
 				System.out.println("So you'd like to place a pet in the shelter.\nWhat is the pet's name?");
 				String petToAddName = input.nextLine();
@@ -78,7 +82,7 @@ public class VirtualPetsAmokApp {
 				switch (petToAddSpecies) {
 				case "1":
 					myPetShelter.addPet(new OrganicCat(petToAddName, "a " + petToAddCharacteristic + " organic cat", 50,
-							50, 25, 25, 25));
+							50, 25, 25, 0));
 					break;
 				case "2":
 					myPetShelter.addPet(new OrganicDog(petToAddName, "a " + petToAddCharacteristic + " organic dog", 50,

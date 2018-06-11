@@ -8,7 +8,7 @@ public class Organic extends VirtualPet {
 		this.thirst = thirst;
 		this.needToPotty = needToPotty;
 	}
-	
+
 	public int getHunger() {
 		return hunger;
 	}
@@ -24,24 +24,14 @@ public class Organic extends VirtualPet {
 	public void raiseHunger() {
 		hunger += 1;
 	}
-	public void raiseThirst() {
-		thirst +=1;
-	}
-	public void raiseNeedToPotty() {
-		needToPotty +=1;
-	}
-	
-	
-//	public int feedOnePet() {
-//		hunger = 0;
-//		needToPotty += getAmount();
-//		return hunger;
-//	}
 
-//	public int waterOnePet() {
-//		thirst = 0;
-//		needToPotty += getAmount();
-//		return thirst;
-//	}
+	public void raiseThirst() {
+		thirst += 1;
+	}
+
+	public void raiseNeedToPotty() {
+		needToPotty += 1;
+	}
+
 
 }

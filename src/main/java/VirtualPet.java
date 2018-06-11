@@ -74,25 +74,27 @@ public abstract class VirtualPet {
 
 	public int playWithPet() {
 		happiness += amount * 3;
+		health += amount;
 		return happiness;
 	}
 
 	public void getStatus() {
 		System.out.println("  " + petName + ", " + description + "\n    Health: " + health + " | Happiness: "
-				+ happiness + "\n    Hunger: " + hunger + " | Thirst: " + thirst
-				+ " | Needs to go potty: " + needToPotty + "\n    Needs oil: " + needForOil
-				+ " | Needs maintenance: " + needForMaintenance + "");
-		
+				+ happiness + "\n    Hunger: " + hunger + " | Thirst: " + thirst + " | Needs to go potty: "
+				+ needToPotty + "\n    Needs oil: " + needForOil + " | Needs maintenance: " + needForMaintenance + "");
+
 	}
 
 	public int feedOnePet() {
 		hunger = 0;
+		thirst += amount;
 		needToPotty += amount;
 		return hunger;
 	}
 
 	public int waterOnePet() {
 		thirst = 0;
+		hunger += amount;
 		needToPotty += amount;
 		return thirst;
 
@@ -104,7 +106,7 @@ public abstract class VirtualPet {
 		amountOfWasteInLitterBox += 1;
 		amountOfWasteInCage += 1;
 	}
-	
+
 	public void oilRobot() {
 		needForOil = 0;
 		happiness += amount;
@@ -116,8 +118,17 @@ public abstract class VirtualPet {
 		happiness += amount;
 		health += amount;
 	}
-	
-//	public void cleanLitterBox() {
-//		amountOfWasteInLitterBox = 0;
-//	}
+
+	public void walk() {
+		happiness += amount;
+		health += amount;
+		needToPotty = 0;
+	}
+
+	public void cleanCage() {
+		amountOfWasteInCage = 0;
+		happiness += amount;
+		health += amount;
+	}
+
 }

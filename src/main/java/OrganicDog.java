@@ -12,10 +12,10 @@ public class OrganicDog extends Organic implements Walking {
 		return wasteInCage;
 	}
 
-	public void cleanCage() {
-		wasteInCage = 0;
-
-	}
+//	public void cleanCage() {
+//		wasteInCage = 0;
+//
+//	}
 
 	public void addWasteInCage() {
 		wasteInCage += 1;

@@ -1,4 +1,4 @@
 
 public interface Walking {
-public void walk(VirtualPet dog);
+	public void walk(VirtualPet dog);
 }

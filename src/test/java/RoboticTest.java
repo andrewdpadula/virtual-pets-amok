@@ -13,13 +13,7 @@ public class RoboticTest {
 		assertThat(needForOilAfterOiling, is(equalTo(0)));
 	}
 	
-/*	@Test
-	public void oilingShouldIncreaseHealth() {
-		int healthBeforeOiling = testPetRobotic.getHealth();
-		testPetRobotic.oilRobot();
-		int healthAfterOiling = testPetRobotic.getHealth();
-		assertThat(healthAfterOiling, is(equalTo(healthBeforeOiling + 5)));
-	}*/
+
 
 	@Test
 	public void maintainShouldDecreaseNeedForMaintenance() {

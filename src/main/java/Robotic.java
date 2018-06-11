@@ -24,12 +24,4 @@ public class Robotic extends VirtualPet {
 		needForMaintenance += 1;
 	}
 
-//	public void oilRobot() {
-//		needForOil = 0;
-//	}
-//
-//	public void maintainRobot() {
-//		needForMaintenance = 0;
-//	}
-
 }
